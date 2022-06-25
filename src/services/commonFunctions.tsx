@@ -32,9 +32,9 @@ export const capitalize = (s: string): string => {
   return s?.charAt(0).toUpperCase() + s?.slice(1)
 }
 
-export const onError = (error: Error): void => {
+export const onError = (error: string): void => {
   showMessage({
-    message: capitalize(error?.message),
+    message: capitalize(error),
     type: 'danger',
     duration: 4000,
   })
