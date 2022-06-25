@@ -52,7 +52,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <Header title={'Home'} />
+      <Header title={'Home'} withIcon={false} />
       <Container>
         <VerticalSpace height={10} />
         {loading ? (
@@ -84,7 +84,6 @@ export default HomeScreen
 const Container = styled.View`
   width: ${screenWidth}px;
   align-self: center;
-  justify-content: center;
   height: ${screenHeight}px;
   background-color: ${colors.greyBackgroundColor};
 
