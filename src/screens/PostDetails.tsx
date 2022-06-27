@@ -11,31 +11,10 @@ import { backend } from '../constants/urls'
 import { Row } from '../components/Row'
 import { useRoute } from '@react-navigation/native'
 import { Comments } from '../components/Comments'
+import { Post, User } from '../modules/common/type'
 
 const defaultPic = require('../../assets/images/defaultPic.png')
 
-type Post = {
-  body: string
-  id: number
-  title: string
-  user_id: number
-}
-
-type Comment = {
-  id: number
-  post_id: number
-  name: string
-  email: string
-  body: string
-}
-
-type User = {
-  email: string
-  gender: string
-  id: number
-  name: string
-  status: string
-}
 
 const PostDetails: React.FC = () => {
   const route = useRoute()
@@ -62,22 +41,20 @@ const PostDetails: React.FC = () => {
   }, [post])
 
   return (
-    <ScreensContainer fullWidth bgColor={colors.greyBackgroundColor}>
+    <ScreensContainer fullWidth>
       <Header title={'Post Details'} />
       <Container>
         <VerticalSpace height={10} />
         {loading ? (
           <SpinnerView>
-            <Spinner isVisible={loading} size={50} type={'Circle'} color={colors.darkBackground} />
+            <Spinner isVisible={loading} size={50} type={'Circle'} color={colors.primary} />
           </SpinnerView>
         ) : (
           <>
-            <CardContainer>
-              <Row justifyContent={'flex-start'} width={screenWidth * 0.8}>
-                <Image resizeMode='contain' source={defaultPic} />
-                <UserName>{user?.name || '-'}</UserName>
-              </Row>
-            </CardContainer>
+            <Row justifyContent={'flex-start'} width={screenWidth * 0.9} backgroundColor={colors.btnTransparent}>
+              <Image resizeMode='contain' source={defaultPic} />
+              <UserName>{user?.name || '-'}</UserName>
+            </Row>
             <VerticalSpace height={10} />
             <CardContainer>
               <Title>
@@ -107,7 +84,6 @@ const Container = styled.View`
   width: ${screenWidth}px;
   align-self: center;
   height: ${screenHeight}px;
-  background-color: ${colors.greyBackgroundColor};
 `
 
 const SpinnerView = styled.View`
@@ -118,7 +94,7 @@ const SpinnerView = styled.View`
 
 const Title = styled.Text`
   color: ${colors.favProductTextColor};
-  font-size: ${perfectFont(13)}px;
+  font-size: ${perfectFont(15)}px;
   margin-left: ${perfectWidth(1)}px;
   font-weight: bold;
 `
@@ -131,7 +107,7 @@ const Body = styled.Text`
 
 const CardContainer = styled.View`
   width: ${screenWidth * 0.9}px;
-  background-color: ${colors.white};
+  background-color: ${colors.greyBackgroundColor};
   min-height: ${screenHeight * 0.05}px;
   border-radius: 7px;
   padding: 10px;
@@ -145,8 +121,8 @@ const Image = styled.Image`
   `
 
 const UserName = styled.Text`
-  color: ${colors.black};
-  font-size: ${perfectFont(14)}px;
+  color: ${colors.secondaryText};
+  font-size: ${perfectFont(16)}px;
   margin-left: ${perfectWidth(5)}px;
   font-weight: bold;
   `
