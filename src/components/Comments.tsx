@@ -17,7 +17,12 @@ export const Comments: React.FC<Props> = ({ comments }) => {
     ({ item }) => {
       return (
         <CommentCard>
-          <Row justifyContent={'flex-start'} width={screenWidth * 0.8} backgroundColor={colors.btnTransparent}>
+          <Row
+            justifyContent={'flex-start'}
+            height={screenHeight * 0.07}
+            width={screenWidth * 0.8}
+            backgroundColor={colors.btnTransparent}
+          >
             <Image resizeMode='contain' source={defaultPic} />
             <UserName>{item?.name || '-'}</UserName>
           </Row>
@@ -74,6 +79,7 @@ const CommentCard = styled.View`
   border-left-width: 1px;
   border-left-color: ${colors.shadow};
   padding-left: 10px;
+  padding-bottom: 10px;
 `
 
 const CommentsContainer = styled.View`
