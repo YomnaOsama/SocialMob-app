@@ -1,15 +1,19 @@
 # SocialMob-app
 
-This is a small version of social app
+This is a small version of social app that contains 3 screens:
+- Splash screen
+- Home screen
+- Post details screen
 
 __App features:__
 
-- The user can vliew a list of posts in the home screen
+- The user can view a list of posts with the number of comments in the home screen
 - The user can click on one post to view its details and the comments on that post
 
 __Notes:__
 
-The posts, user, and coments object returned from the API calls did npt contain an image for the users so a placeholder image was used
+- The used image in the splash screen was found on trnet with the same name :)
+- The posts, user, and coments object returned from the API calls did npt contain an image for the users so a placeholder image was used
 
 __Screenshots:__
 
