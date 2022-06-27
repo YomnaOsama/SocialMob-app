@@ -16,7 +16,7 @@ const Box = styled.View`
   width: ${p => (p.width || screenWidth * 0.9)}px;
   height: ${perfectHeight(83)}px;
   align-self: center;
-  background-color: ${colors.white};
+  background-color: ${p => (p.backgroundColor || colors.white)};
   justify-content: ${p => (p.justifyContent || 'space-between')};
   align-items: center;
 `
