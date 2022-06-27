@@ -53,8 +53,7 @@ const HomeScreen: React.FC = () => {
           <SpinnerView>
             <Spinner isVisible={loading} size={50} type={'Circle'} color={colors.primary} />
           </SpinnerView>
-        )
-          : (
+        ) : (
             <FlatList
               data={postsData}
               renderItem={renderItem}
@@ -76,6 +75,7 @@ const HomeScreen: React.FC = () => {
               }
             />
           )}
+        <VerticalSpace height={10} />
       </Container>
     </>
 
