@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import styled from 'styled-components/native'
+import { pathOr } from 'ramda'
 import VerticalSpace from '../../../components/VerticalSpace'
 import colors from '../../../constants/colors'
 import { backend } from '../../../constants/urls'
 import { onError, perfectFont, perfectWidth, screenHeight, screenWidth } from '../../../services/commonFunctions'
 import { useNavigation } from '@react-navigation/native'
 import { User } from '../../common/type'
+import CommentIcon from '../../../components/Icons/CommentIcon'
 
 const defaultPic = require('../../../../assets/images/defaultPic.png')
 
@@ -21,11 +23,19 @@ const PostCard: React.FC<Props> = ({ title, body, postId, userId }) => {
   const navigation = useNavigation()
   const [userData, setUserData] = useState<User>()
   const [loading, setLoading] = useState<boolean>()
+  const [commentsCount, setCommentsCount] = useState<number>()
 
+  const getCommentsCount = () => {
+    axios.get(`${backend}/posts/${postId}/comments`).then((res) => {
+      setCommentsCount(res.data.length)
+      setLoading(false)
+    })
+      .catch(() => onError('An error occurred! Please try again later'))
+  }
   const getUserData = () => {
     axios.get(`${backend}/users/${userId}`).then((res) => {
       setUserData(res.data)
-      setLoading(false)
+      getCommentsCount()
     })
       .catch(() => onError('An error occurred! Please try again later'))
   }
@@ -55,12 +65,17 @@ const PostCard: React.FC<Props> = ({ title, body, postId, userId }) => {
           <>
             <Row>
               <Image resizeMode='contain' source={defaultPic} />
-              <UserName>{userData?.name || '-'}</UserName>
+              <UserName>{pathOr('-', ['name'], userData)}</UserName>
             </Row>
             <VerticalSpace height={5} />
             <Title>
               {title}
             </Title>
+            <VerticalSpace height={5} />
+            <Row justifyContent={'flex-end'} >
+              <CommentIcon />
+              <UserName>{commentsCount}</UserName>
+            </Row>
             <VerticalSpace height={4} />
           </>
         )
@@ -97,6 +112,7 @@ const Row = styled.View`
   flex-direction: row;
   align-items: center;
 `
+
 const Image = styled.Image`
   width: ${perfectWidth(40)}px;
   aspect-ratio: 1;
