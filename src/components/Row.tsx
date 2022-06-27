@@ -14,7 +14,7 @@ export const Row: React.FC = ({ children, ...props }) => {
 const Box = styled.View`
   flex-direction: row;
   width: ${p => (p.width || screenWidth * 0.9)}px;
-  height: ${perfectHeight(83)}px;
+  height: ${p => (p.height || perfectHeight(83))}px;
   align-self: center;
   background-color: ${p => (p.backgroundColor || colors.white)};
   justify-content: ${p => (p.justifyContent || 'space-between')};
