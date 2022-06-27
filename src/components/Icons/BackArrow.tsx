@@ -21,7 +21,7 @@ const BackArrow = ({
     >
       <G
         fill='none'
-        stroke={colors.favProductTextColor}
+        stroke={color ?? colors.primary}
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth={2}
