@@ -8,25 +8,20 @@ import axios from 'axios'
 import PostCard from '../modules/home/components/PostCard'
 import Spinner from 'react-native-spinkit'
 import { Header } from '../components/Header'
+import { Post } from '../modules/common/type'
+import { backend } from '../constants/urls'
 
-type Post = {
-  body: string
-  id: number
-  title: string
-  user_id: number
-}
 const HomeScreen: React.FC = () => {
   const [postsData, setPostsData] = useState<Post[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const getPosts = () => {
-    axios.get('https://gorest.co.in/public/v2/posts').then((res) => {
+    axios.get(`${backend}/posts`).then((res) => {
       setPostsData(res.data)
       setLoading(false)
     })
       .catch(() => onError('An error occurred! Please try again later'))
   }
-
 
   useEffect(() => {
     getPosts()
@@ -49,7 +44,6 @@ const HomeScreen: React.FC = () => {
 
   const keyExtractor = useCallback(item => item.id, [])
 
-
   return (
     <>
       <Header title={'Home'} withIcon={false} />
@@ -57,7 +51,7 @@ const HomeScreen: React.FC = () => {
         <VerticalSpace height={10} />
         {loading ? (
           <SpinnerView>
-            <Spinner isVisible={loading} size={50} type={'Circle'} color={colors.darkBackground} />
+            <Spinner isVisible={loading} size={50} type={'Circle'} color={colors.primary} />
           </SpinnerView>
         )
           : (
@@ -71,6 +65,15 @@ const HomeScreen: React.FC = () => {
               ListEmptyComponent={() => <Title>No posts found</Title>}
               ItemSeparatorComponent={() => <VerticalSpace height={16} />}
               ListFooterComponent={<VerticalSpace height={100} />}
+              ListHeaderComponent={
+                <>
+                  <VerticalSpace height={12} />
+                  <CommentsTitle>
+                    {'Home Feed: '}
+                  </CommentsTitle>
+                  <VerticalSpace height={8} />
+                </>
+              }
             />
           )}
       </Container>
@@ -85,8 +88,6 @@ const Container = styled.View`
   width: ${screenWidth}px;
   align-self: center;
   height: ${screenHeight}px;
-  background-color: ${colors.greyBackgroundColor};
-
 `
 const Title = styled.Text`
   color: ${colors.favProductTextColor};
@@ -97,4 +98,11 @@ const SpinnerView = styled.View`
   width: ${screenWidth}px;
   justify-content: center;
   align-items: center;
+`
+const CommentsTitle = styled.Text`
+  color: ${colors.favProductTextColor};
+  font-size: ${perfectFont(16)}px;
+  margin-left: ${perfectWidth(1)}px;
+  font-weight: bold;
+  padding-horizontal: ${screenWidth * 0.05}px;
 `
