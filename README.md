@@ -15,10 +15,11 @@ __Screenshots:__
 
 Android:
 
-<img src="https://user-images.githubusercontent.com/35773151/175791361-ac5552a4-8b6a-462d-99d2-ec0d357db0aa.png" width="250" height="500">
-<img src="https://user-images.githubusercontent.com/35773151/175791362-e3ac073b-0271-47cd-be3f-f92e93c53e88.png" width="250" height="500">
+<img src="https://user-images.githubusercontent.com/35773151/176009126-30d570d6-08e4-42d1-ae02-fe13d2b3bafd.png" width="250" height="500">
+<img src="https://user-images.githubusercontent.com/35773151/176009187-7a5073fa-ace1-4b91-b43a-e9f84f837f59.png" width="250" height="500">
+
 
 iOS:
 
-<img src="https://user-images.githubusercontent.com/35773151/175791366-afe2f86e-b753-4267-ae4d-3158d697aa81.png" width="250" height="500">
-<img src="https://user-images.githubusercontent.com/35773151/175791368-864b278b-5799-4162-b300-95817b7837f2.png" width="250" height="500">
+<img src="https://user-images.githubusercontent.com/35773151/176009273-6dbf388b-fc00-47ee-ae44-d625250a62db.png" width="250" height="500">
+<img src="https://user-images.githubusercontent.com/35773151/176009407-aecad6ab-7651-4f48-aa74-08a030636010.png" width="250" height="500">
