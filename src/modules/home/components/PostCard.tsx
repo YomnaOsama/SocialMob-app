@@ -6,6 +6,7 @@ import colors from '../../../constants/colors'
 import { backend } from '../../../constants/urls'
 import { onError, perfectFont, perfectWidth, screenHeight, screenWidth } from '../../../services/commonFunctions'
 import { useNavigation } from '@react-navigation/native'
+import { User } from '../../common/type'
 
 const defaultPic = require('../../../../assets/images/defaultPic.png')
 
@@ -14,13 +15,6 @@ type Props = {
   body: string
   postId: number
   userId: number
-}
-type User = {
-  email: string
-  gender: string
-  id: number
-  name: string
-  status: string
 }
 
 const PostCard: React.FC<Props> = ({ title, body, postId, userId }) => {
@@ -79,14 +73,14 @@ export default PostCard
 
 const CardContainer = styled.TouchableOpacity`
   width: ${screenWidth * 0.9}px;
-  background-color: ${colors.white};
+  background-color: ${colors.greyBackgroundColor};
   min-height: ${screenHeight * 0.05}px;
   border-radius: 7px;
   padding: 15px;
   align-self: center;
 `
 const UserName = styled.Text`
-  color: ${colors.black};
+  color: ${colors.secondaryText};
   font-size: ${perfectFont(14)}px;
   margin-left: ${perfectWidth(5)}px;
   font-weight: bold;
