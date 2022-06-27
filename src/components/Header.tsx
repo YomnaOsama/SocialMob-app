@@ -19,7 +19,13 @@ export const Header: FC<Props> = ({ title, withIcon = true, textColor, backActio
 
   const goBack = () => navigation.goBack()
   return (
-    <Box>
+    <Box style={{
+      shadowColor: colors.shadow,
+      shadowOffset: { width: 0, height: 0 },
+      shadowOpacity: 0.5,
+      shadowRadius: 1,
+      elevation: 20,
+    }}>
       <SafeArea />
       {withIcon ? (
         <Row justifyContent={'flex-start'}>
@@ -32,11 +38,11 @@ export const Header: FC<Props> = ({ title, withIcon = true, textColor, backActio
             <BackArrow />
           </TuchableContainer>
           {!!title && (
-              <Text
-                onPress={backAction ?? goBack}
-              >
-                {title}
-              </Text>
+            <Text
+              onPress={backAction ?? goBack}
+            >
+              {title}
+            </Text>
           )}
         </Row>
       ) : (
@@ -50,7 +56,7 @@ export const Header: FC<Props> = ({ title, withIcon = true, textColor, backActio
 
 const Box = styled.View`
   width: ${screenWidth}px;
-  height: ${perfectHeight(63)}px;
+  height: ${perfectHeight(73)}px;
   align-self: center;
   background-color: ${colors.white};
   justify-content: center;
@@ -64,8 +70,8 @@ const SafeArea = styled.SafeAreaView`
 const TuchableContainer = styled.TouchableOpacity``
 
 const Text = styled.Text`
-  color: ${colors.favProductTextColor};
-  font-size: ${perfectFont(16)}px;
+  color: ${colors.primary};
+  font-size: ${perfectFont(20)}px;
   margin-left: ${perfectWidth(5)}px;
   font-weight: bold;
 `
