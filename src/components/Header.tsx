@@ -28,7 +28,7 @@ export const Header: FC<Props> = ({ title, withIcon = true, textColor, backActio
     }}>
       <SafeArea />
       {withIcon ? (
-        <Row justifyContent={'flex-start'}>
+        <RowBox>
           <TuchableContainer
             style={{
               transform: [{ rotate: I18nManager.isRTL ? '180deg' : '360deg' }],
@@ -44,7 +44,7 @@ export const Header: FC<Props> = ({ title, withIcon = true, textColor, backActio
               {title}
             </Text>
           )}
-        </Row>
+        </RowBox>
       ) : (
         <Text>
           {title}
@@ -74,4 +74,11 @@ const Text = styled.Text`
   font-size: ${perfectFont(20)}px;
   margin-left: ${perfectWidth(5)}px;
   font-weight: bold;
+`
+
+const RowBox = styled.View`
+  flex-direction: row;
+  width: ${p => (p.width || screenWidth * 0.9)}px;
+  align-self: center;
+  align-items: center;
 `
