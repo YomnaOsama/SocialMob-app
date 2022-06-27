@@ -5,16 +5,9 @@ import colors from '../constants/colors'
 import VerticalSpace from '../components/VerticalSpace'
 import { perfectFont, perfectHeight, perfectWidth, screenHeight, screenWidth } from '../services/commonFunctions'
 import { Row } from '../components/Row'
+import { Comment } from '../modules/common/type'
 
 const defaultPic = require('../../assets/images/defaultPic.png')
-
-type Comment = {
-  id: number
-  post_id: number
-  name: string
-  email: string
-  body: string
-}
 
 type Props = {
   comments: Comment[]
@@ -24,7 +17,7 @@ export const Comments: React.FC<Props> = ({ comments }) => {
     ({ item }) => {
       return (
         <CommentCard>
-          <Row justifyContent={'flex-start'} width={screenWidth * 0.8}>
+          <Row justifyContent={'flex-start'} width={screenWidth * 0.8} backgroundColor={colors.btnTransparent}>
             <Image resizeMode='contain' source={defaultPic} />
             <UserName>{item?.name || '-'}</UserName>
           </Row>
@@ -76,11 +69,10 @@ const Box = styled.View`
 `
 const CommentCard = styled.View`
   width: ${screenWidth * 0.8}px;
-  background-color: ${colors.white};
   min-height: ${screenHeight * 0.05}px;
   align-self: center;
-  border-left-width: 2px;
-  border-left-color: ${colors.greyBackgroundColor};
+  border-left-width: 1px;
+  border-left-color: ${colors.shadow};
   padding-left: 10px;
 `
 
@@ -92,7 +84,7 @@ const Divider = styled.View`
   width: 100%;
   height: ${screenHeight * 0.01}px;
   border-bottom-width: ${perfectWidth(1)}px;
-  border-bottom-color: ${colors.greyBackgroundColor};
+  border-bottom-color: ${colors.white};
   align-self: center;
 `
 
@@ -107,14 +99,15 @@ const Image = styled.Image`
   width: ${perfectWidth(40)}px;
   aspect-ratio: 1;
   border-radius: 100px;
-  `
+`
 
 const UserName = styled.Text`
-  color: ${colors.black};
+  color: ${colors.secondaryText};
   font-size: ${perfectFont(14)}px;
   margin-left: ${perfectWidth(5)}px;
   font-weight: bold;
-  `
+`
+
 const Body = styled.Text`
   color: ${colors.black};
   font-size: ${perfectFont(12)}px;
